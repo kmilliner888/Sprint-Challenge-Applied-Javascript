@@ -32,14 +32,14 @@ function Card (object) {
     const cardImage = document.createElement('img');
     const cardAuthor = document.createElement('span');
 
-    card.classList.add('.card');
+    card.classList.add('card');
     cardHeadline.classList.add('headline');
     authorContainer.classList.add('author');
     imageContainer.classList.add('img-container');
 
-    cardHeadline.textContent = object.articles[i].headline;
-    cardImage.src = object.articles[i].authorPhoto;
-    cardAuthor.textContent = object.articles[i].authorName;  
+    cardHeadline.textContent = object.headline;
+    cardImage.src = object.authorPhoto;
+    cardAuthor.textContent = object.authorName;  
     
     card.append(cardHeadline);
     card.append(authorContainer);
@@ -47,17 +47,36 @@ function Card (object) {
     authorContainer.append(cardAuthor);
     imageContainer.append(cardImage);
 
-
-
     return card;
     
 }
 
+const cardParent = document.querySelector('.cards-container');
 
 cardPromise
 .then(response => {
     console.log(response);
-    response.data
+    response.data.articles.javascript.forEach(article => {
+        const jsCard = Card(article)
+        cardParent.appendChild(jsCard)
+    })
+    response.data.articles.bootstrap.forEach(article => {
+        const bsCard = Card(article)
+        cardParent.appendChild(bsCard)
+    })
+    response.data.articles.technology.forEach(article => {
+        const techCard = Card(article)
+        cardParent.appendChild(techCard)
+    })
+    response.data.articles.jquery.forEach(article => {
+        const jqCard = Card(article)
+        cardParent.appendChild(jqCard)
+    })
+    response.data.articles.node.forEach(article => {
+        const nodeCard = Card(article)
+        cardParent.appendChild(nodeCard)
+    })
+
 })
 .catch(error => {
     console.log('error!', error);
