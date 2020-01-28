@@ -9,15 +9,13 @@
 //  </div >
 // And add it to the DOM in the .header-container component
 
-const createHeader = () => {
+const headerParent = document.querySelector('.header-container');
+
+function Header() {
     const header = document.createElement('div');
     const headerDate = document.createElement('span');
-    const headerTitle = docuemnt.createElement('h1');
+    const headerTitle = document.createElement('h1');
     const headerTemp = document.createElement('span');
-
-    header.appendChild(headerDate);
-    header.appendChild(headerTitle);
-    header.appendChild(headerTemp);
 
     header.classList.add('header');
     headerDate.classList.add('date');
@@ -27,14 +25,15 @@ const createHeader = () => {
     headerTitle.textContent = 'Lambda Times';
     headerTemp.textContent = '98';
     
-    const headerParent = document.querySelector('.header-container')
-    headerParent.appendChild(header);
+    header.appendChild(headerDate);
+    header.appendChild(headerTitle);
+    header.appendChild(headerTemp);
 
     return header;
-}
+};
 
-
-
+const newHeader = Header()
+headerParent.appendChild(newHeader);
     
 
     

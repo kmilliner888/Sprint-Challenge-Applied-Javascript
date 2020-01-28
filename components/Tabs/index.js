@@ -28,10 +28,10 @@ const tabParent = document.querySelector('.topics');
 
 tabPromise
 .then(response => {
-    console.log(response)
+    // console.log(response)
     response.data.topics.forEach(topic => {
         const newTab = topicTab(topic)
-        console.log(newTab)
+        // console.log(newTab)
         tabParent.append(newTab)
     })
 })
